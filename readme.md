@@ -12,3 +12,8 @@ Setup Instructions:
   - Add a new nameserver within DNS settings, `fd12::10`, restrict to `railway.internal`
 
 Should be it!
+
+Future work:
+
+- Support persistent storage state (i.e. no need to re-auth on restart)
+- Integrate into CLI
