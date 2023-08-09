@@ -1,10 +1,12 @@
 FROM debian:bookworm-slim
 
+# Install dependencies.
+RUN apt-get update && apt-get install -y curl
+
 # Install Tailscale.
-RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
-RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
-RUN sudo apt-get update
-RUN sudo apt-get install tailscale
+RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.noarmor.gpg | tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.tailscale-keyring.list | tee /etc/apt/sources.list.d/tailscale.list
+RUN apt-get update && apt-get install -y tailscale
 
 # Tailscaled can't run as root user, cuz of an SO_MARK issue.
 # See: https://github.com/tailscale/tailscale/issues/634.
