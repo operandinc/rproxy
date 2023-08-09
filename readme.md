@@ -1,6 +1,8 @@
 A simple little proxy to access Railway internal networks via Tailscale.
 Useful for development and testing of services that aren't exposed via the public internet.
 
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/IyUAJX?referralCode=mg)
+
 Setup Instructions:
 
 - Create a new API key from Tailscale dashboard
