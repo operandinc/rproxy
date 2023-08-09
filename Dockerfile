@@ -1,12 +1,12 @@
 FROM debian:bookworm-slim
 
 # Install dependencies.
-RUN apt-get update && apt-get install -y curl sysctl
+RUN apt-get update && apt-get install -y curl
 
-# Configure IP forwarding.
-RUN echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.conf
-RUN echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf
-RUN sysctl -p /etc/sysctl.conf
+# # Configure IP forwarding.
+# RUN echo 'net.ipv4.ip_forward = 1' | tee -a /etc/sysctl.conf
+# RUN echo 'net.ipv6.conf.all.forwarding = 1' | tee -a /etc/sysctl.conf
+# RUN sysctl -p /etc/sysctl.conf
 
 # Install Tailscale.
 RUN curl -fsSL https://pkgs.tailscale.com/stable/debian/bookworm.noarmor.gpg | tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
