@@ -2,11 +2,12 @@
 
 echo "Starting tailscale proxy..."
 tailscaled --state=/tstorage/tailscale.state \
+    --tun=userspace-networking \
     --socket=/tstorage/tailscale.sock &
 until tailscale --socket=/tstorage/tailscale.sock \
     up \
     --advertise-exit-node \
-    --authkey=$TAILSCALE_AUTHKEY
+    --authkey=$TAILSCALE_API_KEY
 do
     echo "Waiting for auth..."
     sleep 5
