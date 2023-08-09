@@ -6,7 +6,7 @@ tailscaled --state=/tstorage/tailscale.state \
     --socket=/tstorage/tailscale.sock &
 until tailscale --socket=/tstorage/tailscale.sock \
     up \
-    --advertise-routes=10.0.0.0/24,10.0.1.0/24 \
+    --advertise-routes=fd12::/16 \
     --authkey=$TAILSCALE_API_KEY
 do
     echo "Waiting for auth..."
